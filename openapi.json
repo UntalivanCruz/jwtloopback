@@ -1,0 +1,816 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "cuchumbo",
+    "version": "0.0.1",
+    "description": "Cuchumbo navideno",
+    "contact": {
+      "name": "Ivan Cruz",
+      "email": "ivancruzhn@gmail.com"
+    }
+  },
+  "paths": {
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/regalos/count": {
+      "get": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "count",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regalos model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Regalos.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Regalos>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RegalosController.count"
+      }
+    },
+    "/regalos/{id}": {
+      "put": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Regalos PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Regalos"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RegalosController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Regalos PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegalosPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RegalosController.updateById"
+      },
+      "get": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "findById",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regalos model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegalosWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Regalos.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RegalosController.findById"
+      },
+      "delete": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Regalos DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "RegalosController.deleteById"
+      }
+    },
+    "/regalos": {
+      "post": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "create",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regalos model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Regalos"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRegalos"
+              }
+            }
+          }
+        },
+        "operationId": "RegalosController.create"
+      },
+      "patch": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regalos PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Regalos.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Regalos>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegalosPartial"
+              }
+            }
+          }
+        },
+        "operationId": "RegalosController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "RegalosController",
+        "x-operation-name": "find",
+        "tags": [
+          "RegalosController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Regalos model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegalosWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Regalos.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RegalosController.find"
+      }
+    },
+    "/signup": {
+      "post": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "signUp",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser"
+              }
+            }
+          }
+        },
+        "operationId": "UserController.signUp"
+      }
+    },
+    "/users/login": {
+      "post": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "login",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8
+                  }
+                }
+              }
+            }
+          },
+          "description": "The input of login function",
+          "required": true
+        },
+        "operationId": "UserController.login"
+      }
+    },
+    "/whoAmI": {
+      "get": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "whoAmI",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return current user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UserController.whoAmI"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Regalos": {
+        "title": "Regalos",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "monto": {
+            "type": "number"
+          },
+          "sorpresa": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "descripcion"
+        ],
+        "additionalProperties": true
+      },
+      "NewRegalos": {
+        "title": "NewRegalos",
+        "type": "object",
+        "description": "(tsType: Omit<Regalos, 'id'>, schemaOptions: { title: 'NewRegalos', exclude: [ 'id' ] })",
+        "properties": {
+          "descripcion": {
+            "type": "string"
+          },
+          "monto": {
+            "type": "number"
+          },
+          "sorpresa": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "descripcion"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<Regalos, 'id'>"
+      },
+      "RegalosWithRelations": {
+        "title": "RegalosWithRelations",
+        "type": "object",
+        "description": "(tsType: RegalosWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "monto": {
+            "type": "number"
+          },
+          "sorpresa": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "descripcion"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "RegalosWithRelations"
+      },
+      "RegalosPartial": {
+        "title": "RegalosPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Regalos>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "monto": {
+            "type": "number"
+          },
+          "sorpresa": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<Regalos>"
+      },
+      "User": {
+        "title": "User",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "additionalProperties": true
+      },
+      "NewUser": {
+        "title": "NewUser",
+        "type": "object",
+        "description": "(tsType: NewUserRequest, schemaOptions: { title: 'NewUser' })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "NewUserRequest"
+      },
+      "NewUserRequest": {
+        "title": "NewUserRequest",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "additionalProperties": true
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Regalos.Filter": {
+        "type": "object",
+        "title": "Regalos.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "monto": {
+                    "type": "boolean"
+                  },
+                  "sorpresa": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Regalos.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Regalos>"
+      },
+      "Regalos.Filter1": {
+        "type": "object",
+        "title": "Regalos.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Regalos.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "monto": {
+                    "type": "boolean"
+                  },
+                  "sorpresa": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Regalos.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Regalos>"
+      }
+    },
+    "securitySchemes": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "jwt": []
+    }
+  ]
+}

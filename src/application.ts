@@ -50,6 +50,7 @@ export class CuchumboApplication extends BootMixin(
         nested: true,
       },
     };
+
     //...
     // ------ ADD SNIPPET AT THE BOTTOM ---------
     // Mount authentication system

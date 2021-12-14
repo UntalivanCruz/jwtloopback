@@ -1,5 +1,4 @@
 import {ApplicationConfig, CuchumboApplication} from './application';
-
 export * from './application';
 
 export async function main(options: ApplicationConfig = {}) {
@@ -8,6 +7,7 @@ export async function main(options: ApplicationConfig = {}) {
   await app.start();
 
   const url = app.restServer.url;
+
   console.log(`Server is running at ${url}`);
   console.log(`Try ${url}/ping`);
 
@@ -29,7 +29,7 @@ if (require.main === module) {
       openApiSpec: {
         // useful when used with OpenAPI-to-GraphQL to locate your application
         setServersFromRequest: true,
-      },
+      }
     },
   };
   main(config).catch(err => {
